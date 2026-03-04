@@ -4,27 +4,52 @@ import { motion } from "framer-motion";
 import { ChevronDown, Cat, Droplet, Scissors } from "lucide-react";
 import { useState } from "react";
 
-const indicaciones = [
+type IndicacionItem = {
+  id: string;
+  icon: React.ReactNode;
+  title: string;
+  content: string | string[];
+  note?: string;
+};
+
+const indicaciones: IndicacionItem[] = [
   {
     id: "gatos",
     icon: <Cat className="h-5 w-5" />,
     title: "Para traslado de gatos",
-    content:
-      "Próximamente aquí encontrarás las indicaciones detalladas para el traslado de tu gato de forma segura y sin estrés.",
+    content: [
+      "Siempre dentro de una transportadora (ideal rígida), bolso o mochila. NUNCA suelto/a.",
+      "Colocar dentro de la transportadora una mantita polar o similar.",
+      "Traer un sobrecito de comida húmeda o su comida favorita.",
+      "Colocar dentro de la transportadora el juguete favorito de tu gato/a.",
+      "Cubrir la transportadora con una toalla o sabanita para que tu gato/a no pueda ver hacia afuera y sentirse amenazado/a.",
+    ],
+    note: "Si tu gato/a se estresa al salir de tu casa y manifiesta una conducta agresiva, avisanos previamente ya que podemos indicarle una medicación para que esté mucho más tranquilo/a al momento de la consulta.",
   },
   {
     id: "sangre",
     icon: <Droplet className="h-5 w-5" />,
     title: "Para extracción de sangre",
-    content:
-      "Próximamente aquí encontrarás los pasos a seguir antes de traer a tu mascota para la extracción de muestras de sangre.",
+    content: [
+      "Ayuno: 8 a 10 hs de ayuno de sólidos (agua le podés dar).",
+      "En lo posible, deben venir el/la tutor/a y 1 acompañante junto con el 🐱🐶.",
+      "Para 🐱: traer 1 mantita con su olor y 1 sobrecito de comida húmeda o algo que le guste mucho.",
+      "Si se pone muy nervioso/a, consultar antes porque podemos indicarle una medicación para que venga tranqui y se deje extraer sangre.",
+    ],
+    note: "Los análisis de laboratorio se abonan EN EFECTIVO o TRANSFERENCIA.",
   },
   {
     id: "quirurgicas",
     icon: <Scissors className="h-5 w-5" />,
     title: "Pre quirúrgicas",
-    content:
-      "Próximamente aquí encontrarás las indicaciones preoperatorias que debés seguir antes de una cirugía programada.",
+    content: [
+      "8 horas de ayuno de sólidos (comida). El agua se la podés dejar toda la noche y se la retirás apenas te levantás para traerla a la veterinaria.",
+      "Traer sus estudios prequirúrgicos. En caso de no tenerlos, solicitarlos al mail vet.delparque@hotmail.com con nombre del paciente y apellido del tutor/a.",
+      "En el caso de los felinos, traerlos en su transportadora con una mantita/polar adentro.",
+      "En el caso de los perros, traerles una mantita o polar para que al despertar sientan un olor conocido.",
+      "Si está tomando medicación, dársela normalmente el día previo.",
+    ],
+    note: "Te esperamos en el horario pactado (puntual). ¡Gracias! 😊",
   },
 ];
 
@@ -33,14 +58,14 @@ function AccordionItem({
   isOpen,
   onToggle,
 }: {
-  item: (typeof indicaciones)[0];
+  item: IndicacionItem;
   isOpen: boolean;
   onToggle: () => void;
 }) {
+  const isList = Array.isArray(item.content);
+
   return (
-    <div
-      className="overflow-hidden rounded-2xl bg-white border border-border shadow-sm transition-shadow hover:shadow-md"
-    >
+    <div className="overflow-hidden rounded-2xl bg-white border border-border shadow-sm transition-shadow hover:shadow-md">
       <button
         onClick={onToggle}
         className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left"
@@ -56,18 +81,44 @@ function AccordionItem({
           <span className="font-semibold text-foreground text-base">{item.title}</span>
         </div>
         <ChevronDown
-          className="h-5 w-5 flex-shrink-0 text-primary transition-transform duration-200"
+          className="h-5 w-5 flex-shrink-0 text-primary transition-transform duration-300"
           style={{ transform: isOpen ? "rotate(180deg)" : "rotate(0deg)" }}
         />
       </button>
 
       <div
-        className="overflow-hidden transition-all duration-300"
-        style={{ maxHeight: isOpen ? "200px" : "0px" }}
+        className="overflow-hidden transition-all duration-400 ease-in-out"
+        style={{ maxHeight: isOpen ? (isList ? "600px" : "200px") : "0px" }}
       >
-        <p className="px-6 pb-5 text-muted-foreground text-sm leading-relaxed border-t border-border pt-4">
-          {item.content}
-        </p>
+        <div className="px-6 pb-6 border-t border-border pt-4 space-y-2">
+          {isList ? (
+            <>
+              <ul className="space-y-3">
+                {(item.content as string[]).map((point, i) => (
+                  <li key={i} className="flex items-start gap-2.5 text-sm text-muted-foreground leading-relaxed">
+                    <span
+                      className="mt-1.5 flex h-2 w-2 flex-shrink-0 rounded-full"
+                      style={{ background: "#D6006E" }}
+                    />
+                    {point}
+                  </li>
+                ))}
+              </ul>
+              {item.note && (
+                <p
+                  className="mt-4 text-sm font-semibold pt-3 border-t border-border"
+                  style={{ color: "#D6006E" }}
+                >
+                  {item.note}
+                </p>
+              )}
+            </>
+          ) : (
+            <p className="text-muted-foreground text-sm leading-relaxed">
+              {item.content as string}
+            </p>
+          )}
+        </div>
       </div>
     </div>
   );

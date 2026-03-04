@@ -31,12 +31,6 @@ export function Header() {
 
         {/* Logo */}
         <Link href="#inicio" className="flex items-center gap-2.5 flex-shrink-0">
-          <div
-            className="flex h-9 w-9 items-center justify-center rounded-full text-white font-bold text-lg shadow-md"
-            style={{ background: "linear-gradient(135deg,#D6006E,#b5005c)" }}
-          >
-            🐾
-          </div>
           <div className="leading-tight">
             <span className="block text-sm font-bold text-foreground">Veterinaria del Parque</span>
             <span className="block text-xs text-primary font-medium">@vet.delparque</span>
