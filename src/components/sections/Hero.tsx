@@ -43,7 +43,7 @@ export function Hero() {
   return (
     <section id="inicio" className="relative overflow-hidden pb-28 pt-20">
       {/* Decorative background blobs */}
-      <div className="pointer-events-none absolute -top-32 -right-32 h-[500px] w-[500px] rounded-full opacity-20 blur-3xl" style={{ background: "#D6006E" }} />
+      <div className="pointer-events-none absolute -top-62 -right-32 h-[500px] w-[500px] rounded-full opacity-20 blur-3xl" style={{ background: "#D6006E" }} />
       <div className="pointer-events-none absolute -bottom-20 -left-20 h-[400px] w-[400px] rounded-full opacity-15 blur-3xl" style={{ background: "#E8C5D0" }} />
 
       <div className="container relative z-10 mx-auto px-4 md:px-6">
