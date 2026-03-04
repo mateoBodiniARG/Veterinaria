@@ -9,8 +9,6 @@ const TURNO_LINK = "https://gestion.mascotamas.com/j14pV5f0zz3BzHoFedQ5/turno?ut
 const WA_LINK = "https://api.whatsapp.com/send?phone=5493416152828";
 const IG_LINK = "https://www.instagram.com/vet.delparque/";
 const FB_LINK = "https://www.facebook.com/vetdelparque?mibextid=PtKPJ9";
-const EMAIL = "vet.delparque@hotmail.com";
-const PHONE = "tel:3416152828";
 
 const quickLinks = [
   {
@@ -38,12 +36,6 @@ const quickLinks = [
     label: "Facebook",
     href: FB_LINK,
     external: true,
-  },
-  {
-    icon: <Mail className="h-5 w-5" />,
-    label: "Email",
-    href: `mailto:${EMAIL}`,
-    external: false,
   },
 ];
 
@@ -74,9 +66,9 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-5xl font-extrabold tracking-tight sm:text-6xl md:text-7xl text-foreground"
+            className="text-5xl font-extrabold tracking-normal sm:text-6xl md:text-7xl"
           >
-            Veterinaria{" "}
+            <span style={{ color: "#4a2d3e" }}>Veterinaria</span>{" "}
             <span
               className="relative inline-block"
               style={{ color: "#D6006E" }}
@@ -96,7 +88,7 @@ export function Hero() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="flex flex-col items-center gap-1"
           >
-            <span className="text-lg font-semibold text-primary">@vet.delparque</span>
+            <a href={IG_LINK} target="_blank" rel="noopener noreferrer" className="text-lg font-semibold text-primary hover:underline underline-offset-2 transition-all">@vet.delparque</a>
             <p className="max-w-xl text-lg text-muted-foreground">
               Tu clínica de confianza en Rosario, especializada en el cuidado integral
               de tus mascotas con amor y profesionalismo. 🐱🐶
@@ -130,19 +122,6 @@ export function Hero() {
               </a>
             ))}
           </motion.div>
-
-          {/* Phone number */}
-          <motion.a
-            href={PHONE}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.45 }}
-            className="mt-1 flex items-center gap-2 text-base text-muted-foreground hover:text-primary transition-colors font-medium"
-          >
-            <Phone className="h-4 w-4" />
-            341-6152828
-          </motion.a>
-
         </div>
       </div>
     </section>
