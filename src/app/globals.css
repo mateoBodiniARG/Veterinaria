@@ -1,6 +1,6 @@
 @import "tailwindcss";
-@import "tw-animate-css";
-@import "shadcn/tailwind.css";
+/* @import "tw-animate-css"; */
+/* @import "shadcn/tailwind.css"; */
 
 @custom-variant dark (&:is(.dark *));
 
@@ -47,37 +47,37 @@
 
 :root {
   --radius: 0.75rem;
-  --background: #F0EEEE;
+  --background: #f0eeee;
   --foreground: #2d1f2a;
   --card: #ffffff;
   --card-foreground: #2d1f2a;
   --popover: #ffffff;
   --popover-foreground: #2d1f2a;
-  --primary: #D6006E;
+  --primary: #d6006e;
   --primary-foreground: #ffffff;
-  --secondary: #E8C5D0;
+  --secondary: #e8c5d0;
   --secondary-foreground: #2d1f2a;
   --muted: #f5eef2;
   --muted-foreground: #7a5a6a;
-  --accent: #E8C5D0;
+  --accent: #e8c5d0;
   --accent-foreground: #2d1f2a;
   --destructive: #c0003a;
   --border: #e0cdd5;
   --input: #e0cdd5;
-  --ring: #D6006E;
-  --chart-1: #D6006E;
-  --chart-2: #E8C5D0;
+  --ring: #d6006e;
+  --chart-1: #d6006e;
+  --chart-2: #e8c5d0;
   --chart-3: #b5005c;
   --chart-4: #f472b6;
   --chart-5: #fda4af;
-  --sidebar: #F0EEEE;
+  --sidebar: #f0eeee;
   --sidebar-foreground: #2d1f2a;
-  --sidebar-primary: #D6006E;
+  --sidebar-primary: #d6006e;
   --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #E8C5D0;
+  --sidebar-accent: #e8c5d0;
   --sidebar-accent-foreground: #2d1f2a;
   --sidebar-border: #e0cdd5;
-  --sidebar-ring: #D6006E;
+  --sidebar-ring: #d6006e;
 }
 
 .dark {
